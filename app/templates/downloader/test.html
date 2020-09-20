@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% for i in r.text %}
+    {{i}}
+
+    {% endfor %}
+    <script type="text/javascript">
+      let ip = "{{ip}}"
+      window.location.replace(`http://${ip}:8000`)
+
+
+
+    </script>
+  </body>
+</html>
