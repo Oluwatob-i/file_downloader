@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,11 +11,21 @@
 
     {% endfor %}
     <script type="text/javascript">
-      let ip = "{{ip}}"
-      window.location.replace(`http://${ip}:8000`)
+      let ip = "{{ip}}"; // get the ip address
+      let defaultGateway = ''; // initialize defaultGateway to an empty string
+      // initialize dots, dots will hold the number of . in the ip address
+      // an ip address has 3 dots that separate the numbers
+      let dots = 0;
 
-
-
+      for (let i of ip) {
+        if (i == '.') ++dots;
+        // get all the numbers before the last dot
+        if (dots <= 2) defaultGateway += i;
+      }
+      // appent .1 to defaultGateway
+      // this is the default gateway
+      defaultGateway += '.1';
+      window.location.replace(`http://${defaultGateway}:8000`)
     </script>
   </body>
 </html>
